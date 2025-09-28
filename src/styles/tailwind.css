@@ -1,0 +1,430 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Enhanced root variables for improved fintech UX */
+@layer base {
+  :root {
+    /* Enhanced color palette for better accessibility - Fixed RGB format */
+    --background: 250 250 250;
+    --foreground: 15 23 42;
+
+    /* Refined card colors for better contrast */
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+
+    /* Improved popover styling */
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+
+    /* Enhanced primary colors for fintech trust */
+    --primary: 16 82 169; /* Professional blue */
+    --primary-foreground: 255 255 255;
+
+    /* Warmer secondary colors */
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+
+    /* Better muted colors for accessibility */
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
+
+    /* Enhanced accent for interactive elements */
+    --accent: 236 254 255;
+    --accent-foreground: 8 51 68;
+
+    /* Improved destructive colors */
+    --destructive: 220 38 38;
+    --destructive-foreground: 255 255 255;
+
+    /* Professional border colors */
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 16 82 169;
+
+    /* Enhanced status colors for fintech */
+    --success: 22 163 74;
+    --success-foreground: 255 255 255;
+    --warning: 245 158 11;
+    --warning-foreground: 255 255 255;
+    --error: 220 38 38;
+    --error-foreground: 255 255 255;
+    --info: 59 130 246;
+    --info-foreground: 255 255 255;
+
+    /* Enhanced radius for modern look */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 8 8 11;
+    --foreground: 250 250 250;
+    --card: 24 24 27;
+    --card-foreground: 250 250 250;
+    --popover: 24 24 27;
+    --popover-foreground: 250 250 250;
+    --primary: 99 179 237;
+    --primary-foreground: 8 8 11;
+    --secondary: 39 39 42;
+    --secondary-foreground: 250 250 250;
+    --muted: 39 39 42;
+    --muted-foreground: 161 161 170;
+    --accent: 39 39 42;
+    --accent-foreground: 250 250 250;
+    --destructive: 239 68 68;
+    --destructive-foreground: 250 250 250;
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 99 179 237;
+    --success: 34 197 94;
+    --success-foreground: 8 8 11;
+    --warning: 251 191 36;
+    --warning-foreground: 8 8 11;
+    --error: 239 68 68;
+    --error-foreground: 250 250 250;
+    --info: 96 165 250;
+    --info-foreground: 8 8 11;
+  }
+}
+
+/* Enhanced base styles for better fintech UX */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  :focus {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced typography scale */
+  .text-display {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+  
+  .text-headline {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+  
+  .text-title {
+    @apply text-xl md:text-2xl font-semibold tracking-tight;
+  }
+  
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply text-sm text-muted-foreground;
+  }
+}
+
+/* Enhanced component styles for fintech UX */
+@layer components {
+  /* Enhanced button styles */
+  .btn-primary-enhanced {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium;
+    @apply hover:opacity-90 focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply transition-all duration-200 ease-in-out;
+    @apply shadow-sm hover:shadow-md;
+  }
+
+  /* Enhanced card styles */
+  .card-enhanced {
+    @apply bg-card text-card-foreground rounded-xl border border-border;
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  /* Progress indicator styles */
+  .progress-step {
+    @apply w-10 h-10 rounded-full border-2 flex items-center justify-center;
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .progress-step-active {
+    @apply bg-primary border-primary text-primary-foreground;
+    @apply scale-110 shadow-lg;
+  }
+  
+  .progress-step-completed {
+    @apply bg-success border-success text-success-foreground;
+    @apply shadow-md;
+  }
+  
+  .progress-step-inactive {
+    @apply bg-muted border-muted-foreground text-muted-foreground;
+  }
+
+  /* Enhanced form styles */
+  .form-field {
+    @apply space-y-2;
+  }
+  
+  .form-label {
+    @apply text-sm font-medium text-foreground;
+  }
+  
+  .form-input {
+    @apply w-full px-3 py-2 border border-input rounded-md;
+    @apply bg-background text-foreground;
+    @apply focus:ring-2 focus:ring-ring focus:border-ring;
+    @apply transition-colors duration-200;
+  }
+  
+  .form-error {
+    @apply text-sm text-error flex items-center space-x-1;
+  }
+  
+  .form-helper {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Enhanced tooltip styles */
+  .tooltip {
+    @apply absolute z-50 px-3 py-2 bg-popover text-popover-foreground;
+    @apply border border-border rounded-md shadow-lg text-sm;
+    @apply opacity-0 invisible transition-all duration-200;
+  }
+  
+  .tooltip-visible {
+    @apply opacity-100 visible;
+  }
+
+  /* Enhanced notification styles */
+  .notification {
+    @apply fixed top-4 right-4 z-50 max-w-sm;
+    @apply bg-card border border-border rounded-lg shadow-lg p-4;
+    @apply transform translate-x-full opacity-0;
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .notification-show {
+    @apply translate-x-0 opacity-100;
+  }
+
+  /* Status indicator styles */
+  .status-success {
+    @apply text-success border-success;
+  }
+  
+  .status-warning {
+    @apply text-warning border-warning;
+  }
+  
+  .status-error {
+    @apply text-error border-error;
+  }
+  
+  .status-info {
+    @apply text-info border-info;
+  }
+
+  /* Enhanced loading states */
+  .loading-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent;
+  }
+
+  /* Enhanced mobile responsiveness */
+  .mobile-friendly {
+    @apply text-base leading-relaxed;
+    @apply touch-manipulation;
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-friendly {
+      @apply text-lg leading-relaxed;
+    }
+  }
+
+  /* Accessibility enhancements */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scale-in {
+    from { 
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Enhanced utility classes */
+@layer utilities {
+  /* Enhanced spacing utilities */
+  .space-y-section {
+    @apply space-y-8 md:space-y-12;
+  }
+  
+  .space-x-section {
+    @apply space-x-4 md:space-x-8;
+  }
+
+  /* Enhanced container utilities */
+  .container-enhanced {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Enhanced grid utilities */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  /* Enhanced responsive utilities */
+  .responsive-text {
+    @apply text-sm md:text-base;
+  }
+  
+  .responsive-padding {
+    @apply p-4 md:p-6 lg:p-8;
+  }
+  
+  .responsive-margin {
+    @apply m-4 md:m-6 lg:m-8;
+  }
+
+  /* Enhanced state utilities */
+  .state-loading {
+    @apply opacity-50 pointer-events-none cursor-not-allowed;
+  }
+  
+  .state-success {
+    @apply border-success text-success;
+  }
+  
+  .state-error {
+    @apply border-error text-error;
+  }
+  
+  .state-disabled {
+    @apply opacity-40 pointer-events-none;
+  }
+
+  /* Fintech-specific utilities */
+  .currency-display {
+    @apply font-mono font-semibold tracking-wide;
+  }
+  
+  .percentage-display {
+    @apply font-semibold;
+  }
+  
+  .tax-amount {
+    @apply text-2xl font-bold currency-display;
+  }
+  
+  .form-section {
+    @apply bg-card rounded-lg border border-border p-6 space-y-4;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-muted rounded-full h-2 overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-primary rounded-full transition-all duration-500 ease-out;
+  }
+}
+
+/* Enhanced print styles */
+@media print {
+  .print-hide {
+    @apply hidden;
+  }
+  
+  .print-only {
+    @apply block;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+  
+  * {
+    @apply text-black bg-white;
+  }
+}
+
+/* Enhanced high contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0 0;
+    --input: 0 0 0;
+  }
+}
+
+/* Enhanced reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
